@@ -5,6 +5,16 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
+- task: UseDotNet@2
+  displayName: 'Install .NET core sdk'
+  inputs:
+   version: 6.1.x
+   performMultiLevelLookup: true
+
+- task: UseDotNet@2
+  displayName: 'Set .NET Core version to use'
+  inputs:
+    version: '6.1.x'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
