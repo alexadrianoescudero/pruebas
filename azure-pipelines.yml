@@ -1,25 +1,13 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
-
+  vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
-- task: Npm@0
+- task: CmdLine@2
   inputs:
-    #cwd: # string. working folder. 
-    command: 'install' 
-    # string. Required. npm command. Default: install.
+    script: |
+      npm install -g swaggerhub-cli
+      swaggerhub api:export Alex/<1 --username alexliga1998 --token 9a4df898-c8ef-4f5d-8154-b138d3d5b12b api-definition.yaml
+  displayName: 'Export API definition from SwaggerHub'
