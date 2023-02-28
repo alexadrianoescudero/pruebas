@@ -23,11 +23,11 @@ steps:
   displayName: 'Build project'
 
 
-- task: CmdLine@2
-  inputs:
-    script: |
-      npm install -g swaggerhub-cli
-      swaggerhub login --token 9a4df898-c8ef-4f5d-8154-b138d3d5b12b
+- script: |
+    npm install -g swaggerhub-cli
+  displayName: 'Install SwaggerHub-CLI'
+- script: |
+    swaggerhub login --token 9a4df898-c8ef-4f5d-8154-b138d3d5b12b
       swaggerhub api:create PruebaAlex/1.0.0 $(build.artifactstagingdirectory)/swagger.json
   displayName: 'Import API definition to SwaggerHub'
 
