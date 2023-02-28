@@ -22,12 +22,15 @@ steps:
     arguments: '--configuration Release'
   displayName: 'Build project'
 
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'swagger'
+    arguments: 'tofile --output api-definition.json'
+  displayName: 'Generate OpenAPI spec'
 
 - script: |
-    npm install -g swaggerhub-cli
-  displayName: 'Install SwaggerHub-CLI'
-- script: |
+    dotnet tool install -g swaggerhub-cli
     swaggerhub login --token 9a4df898-c8ef-4f5d-8154-b138d3d5b12b
-      swaggerhub api:create ALEXLIGA1998_1/mi-api 1.0 ./swagger.json
-  displayName: 'Import API definition to SwaggerHub'
+    swaggerhub api:create mi-api --version 1.0
+  displayName: 'Manage API in SwaggerHub'
 
