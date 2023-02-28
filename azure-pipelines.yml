@@ -22,11 +22,6 @@ steps:
     arguments: '--configuration Release'
   displayName: 'Build project'
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'swagger'
-    arguments: 'tofile --output swagger.json'
-  displayName: 'Generate OpenAPI spec'
 
 - task: CmdLine@2
   inputs:
