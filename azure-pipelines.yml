@@ -22,7 +22,7 @@ steps:
   inputs:
     script: |
       npm install -g swaggerhub-cli
-      swaggerhub login 9a4df898-c8ef-4f5d-8154-b138d3d5b12b
+      swaggerhub login --token 9a4df898-c8ef-4f5d-8154-b138d3d5b12b
       swaggerhub api:create PruebaAlex --version 1
       swaggerhub api:import Arquetipo_base_de_datos/1 --spec api-definition.json
   displayName: 'Import API definition to SwaggerHub'
