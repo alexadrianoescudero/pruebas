@@ -22,11 +22,11 @@ steps:
     arguments: '--configuration Release'
   displayName: 'Build project'
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'swagger'
-    arguments: 'tofile --output api-definition.json'
-  displayName: 'Generate OpenAPI spec'
+# - task: DotNetCoreCLI@2
+#   inputs:
+#     command: 'swagger'
+#     arguments: 'tofile --output api-definition.json'
+#   displayName: 'Generate OpenAPI spec'
 
 - script: |
     dotnet tool install -g swaggerhub-cli
