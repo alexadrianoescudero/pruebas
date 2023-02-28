@@ -2,12 +2,28 @@ trigger:
 - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
 steps:
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+    arguments: '--configuration Release'
+  displayName: 'Build project'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'swagger'
+    arguments: 'tofile --output api-definition.json'
+  displayName: 'Generate OpenAPI spec'
+
 - task: CmdLine@2
   inputs:
     script: |
       npm install -g swaggerhub-cli
-      swaggerhub api:export Alex/<1 --username alexliga1998 --token 9a4df898-c8ef-4f5d-8154-b138d3d5b12b api-definition.yaml
-  displayName: 'Export API definition from SwaggerHub'
+      swaggerhub login 9a4df898-c8ef-4f5d-8154-b138d3d5b12b
+      swaggerhub api:create PruebaAlex --version 1
+      swaggerhub api:import Arquetipo_base_de_datos/1 --spec api-definition.json
+  displayName: 'Import API definition to SwaggerHub'
+
