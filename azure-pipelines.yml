@@ -54,6 +54,10 @@ steps:
   displayName: 'Generate Swagger JSON'
 
 - script: |
+    npm install -g swaggerhub-cli
+  displayName: 'Install SwaggerHub CLI'
+
+- script: |
     swaggerhub api:push ALEXLIGA1998_1/Pruebasss:1.0 $(System.DefaultWorkingDirectory)\BP.Ecommerce.API\api.json --private
   displayName: 'Push to SwaggerHub'
 # - task: CmdLine@2
