@@ -53,17 +53,13 @@ steps:
     dotnet swagger tofile --output $(System.DefaultWorkingDirectory)\BP.Ecommerce.API\api.json $(System.DefaultWorkingDirectory)\BP.Ecommerce.API\bin\$(buildConfiguration)\net6.0\BP.Ecommerce.API.dll v1
   displayName: 'Generate Swagger JSON'
 
-- script: |
-    npm install -g swaggerhub-cli
-  displayName: 'Install SwaggerHub CLI'
+# - script: |
+#     npm install -g swaggerhub-cli
+#   displayName: 'Install SwaggerHub CLI'
 
-- task: CmdLine@2
-  displayName: 'Push Swagger definition to SwaggerHub'
-  inputs:
-    script: 'swaggerhub push ALEXLIGA1998_1/Pruebasss:1.0 $(System.DefaultWorkingDirectory)\BP.Ecommerce.API\api.json'
-    env:
-      SWAGGERHUB_APIKEY: '9a4df898-c8ef-4f5d-8154-b138d3d5b12b'
-      displayName: 'Import API definition to SwaggerHub'
+- script: |
+      curl -X POST -H "Content-Type: multipart/form-data" -H "Authorization: Bearer 9a4df898-c8ef-4f5d-8154-b138d3d5b12b" -F "spec=@$(System.DefaultWorkingDirectory)\BP.Ecommerce.API\api.json" "https://api.swaggerhub.com/apis/ALEXLIGA1998_1"
+  displayName: 'Cargar archivo de definición de API en SwaggerHub'
 
 # - script: |
 #       npm install -g swaggerhub-cli
