@@ -58,7 +58,7 @@ steps:
 #   displayName: 'Install SwaggerHub CLI'
 
 - script: |
-      curl -X POST -H "Content-Type: multipart/form-data" -F "spec=@$(System.DefaultWorkingDirectory)\BP.Ecommerce.API\api.json" "https://api.swaggerhub.com/apis/ALEXLIGA1998_1"
+      curl -X POST -H "Content-Type: multipart/form-data" -F "spec=$(System.DefaultWorkingDirectory)\BP.Ecommerce.API\api.json" "https://api.swaggerhub.com/apis/ALEXLIGA1998_1"
   displayName: 'Cargar archivo de definición de API en SwaggerHub'
 
 # - script: |
