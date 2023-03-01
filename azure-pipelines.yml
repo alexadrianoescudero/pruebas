@@ -58,8 +58,13 @@ steps:
   displayName: 'Install SwaggerHub CLI'
 
 - script: |
-    swaggerhub api:push ALEXLIGA1998_1/Pruebasss:1.0 $(System.DefaultWorkingDirectory)\BP.Ecommerce.API\api.json --private
-  displayName: 'Push to SwaggerHub'
+      swaggerhub login --token 9a4df898-c8ef-4f5d-8154-b138d3d5b12b
+      swaggerhub api:create ALEXLIGA1998_1/Pruebasss:1.0 $(System.DefaultWorkingDirectory)\BP.Ecommerce.API\api.json
+  displayName: 'Import API definition to SwaggerHub'
+  
+# - script: |
+#     swaggerhub api:push ALEXLIGA1998_1/Pruebasss:1.0 $(System.DefaultWorkingDirectory)\BP.Ecommerce.API\api.json --private
+#   displayName: 'Push to SwaggerHub'
 # - task: CmdLine@2
 #   displayName: 'Generate Swagger definition'
 #   inputs:
