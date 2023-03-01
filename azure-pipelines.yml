@@ -5,35 +5,6 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
-# - task: UseDotNet@2
-#   displayName: 'Install .NET core sdk'
-#   inputs:
-#    version: 6.0.x
-#    performMultiLevelLookup: true
-
-# - task: UseDotNet@2
-#   displayName: 'Set .NET Core version to use'
-#   inputs:
-#     version: '6.0.x'
-# - task: DotNetCoreCLI@2
-#   inputs:
-#     command: 'build'
-#     projects: '**/*.csproj'
-#     arguments: '--configuration Release'
-#   displayName: 'Build project'
-
-# - task: DotNetCoreCLI@2
-#   inputs:
-#     command: 'swagger'
-#     arguments: 'tofile --output api-definition.json'
-#   displayName: 'Generate OpenAPI spec'
-
-# - script: |
-#     dotnet tool install -g swaggerhub-cli
-#     swaggerhub login --token 9a4df898-c8ef-4f5d-8154-b138d3d5b12b
-#     swaggerhub api:create ALEXLIGA1998_1/mi-api --version 1.0
-#   displayName: 'Manage API in SwaggerHub'
-
 - task: DotNetCoreCLI@2
   displayName: 'Build solution'
   inputs:
