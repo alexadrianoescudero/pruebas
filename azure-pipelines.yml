@@ -41,7 +41,14 @@ steps:
     projects: '**/*.csproj'
     arguments: '--configuration release'
 
-- task: CmdLine@2
-  displayName: 'Generate Swagger definition'
-  inputs:
-    script: 'dotnet swagger tofile --output swagger.json $(System.DefaultWorkingDirectory)/BP.Ecommerce.API/bin/Release/net6.0/BP.Ecommerce.API v1'
+- script: |
+    npm install -g swaggerhub-cli
+  displayName: 'Install SwaggerHub CLI'
+  
+"scripts": {
+  "swaggerhub:create": "swaggerhub api:create ALEXLIGA1998_1/Pruebassss --private --version 1.0"
+}
+# - task: CmdLine@2
+#   displayName: 'Generate Swagger definition'
+#   inputs:
+#     script: 'dotnet swagger tofile --output swagger.json $(System.DefaultWorkingDirectory)/BP.Ecommerce.API/bin/Release/net6.0/BP.Ecommerce.API v1'
