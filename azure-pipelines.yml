@@ -54,7 +54,7 @@ steps:
   displayName: 'Generate Swagger JSON'
 
 - script: |
-    swaggerhub api:push ALEXLIGA1998_1/Pruebasss:1.0 $(Build.ArtifactStagingDirectory)/api.json --private
+    swaggerhub api:push ALEXLIGA1998_1/Pruebasss:1.0 $(System.DefaultWorkingDirectory)\BP.Ecommerce.API\api.json --private
   displayName: 'Push to SwaggerHub'
 # - task: CmdLine@2
 #   displayName: 'Generate Swagger definition'
