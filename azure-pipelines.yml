@@ -46,7 +46,6 @@ steps:
 #     arguments: 'tofile --output "swagger.json" "Arquetipo_base_de_datos API" V1'
 
 - script: |
-    dotnet build
     dotnet swagger tofile --output $(Build.ArtifactStagingDirectory)/swagger.json --serializeasv2 --includexmlcomments $(System.DefaultWorkingDirectory)/BP.Ecommerce.API/bin/Debug/net6.0/BP.Ecommerce.API.dll v1
   displayName: 'Generate Swagger JSON'
 
