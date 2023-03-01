@@ -34,6 +34,13 @@ steps:
 #     swaggerhub api:create ALEXLIGA1998_1/mi-api --version 1.0
 #   displayName: 'Manage API in SwaggerHub'
 
+- task: DotNetCoreCLI@2
+  displayName: 'Build solution'
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+    arguments: '--configuration release'
+
 - task: CmdLine@2
   displayName: 'Generate Swagger definition'
   inputs:
