@@ -49,11 +49,11 @@ steps:
 - script: |
     dotnet new tool-manifest
     dotnet tool install --tool-path $(Agent.ToolsDirectory) --version 6.2.3 Swashbuckle.AspNetCore.Cli
-    
+    dotnet swagger tofile --output $(Build.ArtifactStagingDirectory)/api.json $(System.DefaultWorkingDirectory)/BP.Ecommerce.API/bin/Debug/net6.0/BP.Ecommerce.API.dll v1
   displayName: 'Generate Swagger JSON'
 
 - script: |
-    swaggerhub api:push ALEXLIGA1998_1/Pruebasss:1.0 $(Build.ArtifactStagingDirectory)/swagger.json --private
+    swaggerhub api:push ALEXLIGA1998_1/Pruebasss:1.0 $(Build.ArtifactStagingDirectory)/api.json --private
   displayName: 'Push to SwaggerHub'
 # - task: CmdLine@2
 #   displayName: 'Generate Swagger definition'
