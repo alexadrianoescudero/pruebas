@@ -43,6 +43,7 @@ steps:
   inputs:
     command: 'custom'
     custom: 'swagger'
+    arguments: 'tofile --output "swagger.json" "Arquetipo_base_de_datos API V1'
 
 - script: |
     dotnet build
