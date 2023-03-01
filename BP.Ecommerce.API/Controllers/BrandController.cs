@@ -67,18 +67,18 @@ namespace BP.Ecommerce.API.Controllers
         }
 
 
-        /// <summary>
-        /// Método que elimina un producto
-        /// </summary>
-        /// <remarks>Método que elimina un producto en la base de datos</remarks>
-        /// <param name="id">id del producto</param>
-        /// <response code="200">TODO BIEN</response>
-        /// <returns></returns>
-        [HttpDelete("{id}")]
-        public async Task<bool> DeleteAsync(Guid id)
-        {
-            return await service.DeleteAsync(id);
-        }
+        ///// <summary>
+        ///// Método que elimina un producto
+        ///// </summary>
+        ///// <remarks>Método que elimina un producto en la base de datos</remarks>
+        ///// <param name="id">id del producto</param>
+        ///// <response code="200">TODO BIEN</response>
+        ///// <returns></returns>
+        //[HttpDelete("{id}")]
+        //public async Task<bool> DeleteAsync(Guid id)
+        //{
+        //    return await service.DeleteAsync(id);
+        //}
 
     }
 }
