@@ -44,10 +44,19 @@ steps:
 - script: |
     npm install -g swaggerhub-cli
   displayName: 'Install SwaggerHub CLI'
-  
-"scripts": {
-  "swaggerhub:create": "swaggerhub api:create ALEXLIGA1998_1/Pruebassss --private --version 1.0"
-}
+
+# variables:
+#   SWAGGERHUB_APIKEY: '9a4df898-c8ef-4f5d-8154-b138d3d5b12b'
+#   SWAGGERHUB_HOST: 'api.swaggerhub.com'
+
+- script: |
+    dotnet build
+    dotnet swagger tofile --output $(Build.ArtifactStagingDirectory)/swagger.json --serializeasv2 --includexmlcomments $(System.DefaultWorkingDirectory)/BP.Ecommerce.API/bin/Debug/net6.0/BP.Ecommerce.API.dll v1
+  displayName: 'Generate Swagger JSON'
+
+- script: |
+    swaggerhub api:push ALEXLIGA1998_1/Pruebasss:1.0 $(Build.ArtifactStagingDirectory)/swagger.json --private
+  displayName: 'Push to SwaggerHub'
 # - task: CmdLine@2
 #   displayName: 'Generate Swagger definition'
 #   inputs:
