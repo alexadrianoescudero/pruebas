@@ -52,6 +52,7 @@ steps:
     dotnet tool restore
     echo $(System.DefaultWorkingDirectory)
     echo $(Agent.ToolsDirectory)
+    echo $(Build.ArtifactStagingDirectory)
     dotnet swagger tofile --output $(System.DefaultWorkingDirectory)/api.json $(System.DefaultWorkingDirectory)/BP.Ecommerce.API/bin/Debug/net6.0/BP.Ecommerce.API.dll v1
   displayName: 'Generate Swagger JSON'
 
