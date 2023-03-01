@@ -20,6 +20,18 @@ steps:
 #   SWAGGERHUB_APIKEY: '9a4df898-c8ef-4f5d-8154-b138d3d5b12b'
 #   SWAGGERHUB_HOST: 'api.swaggerhub.com'
 
+- task: DotNetCoreCLI@2
+  displayName: 'Instalar la herramienta Swashbuckle.AspNetCore.Cli'
+  inputs:
+    command: 'custom'
+    custom: 'tool'
+    arguments: 'install --global Swashbuckle.AspNetCore.Cli'
+- task: DotNetCoreCLI@2
+  displayName: 'Generar documentación de Swagger'
+  inputs:
+    command: 'custom'
+    custom: 'swagger'
+
 - script: |
     dotnet build
     dotnet tool install -g Swashbuckle.AspNetCore.Cli
