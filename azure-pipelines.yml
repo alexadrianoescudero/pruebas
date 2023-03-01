@@ -44,4 +44,4 @@ steps:
 - task: CmdLine@2
   displayName: 'Generate Swagger definition'
   inputs:
-    script: 'dotnet swagger tofile --output swagger.json $(System.DefaultWorkingDirectory)/BP.Ecommerce.API/bin/Release/net6.0/BP.Ecommerce.API v1'
+    script: 'dotnet swagger tofile --output swagger.json $(System.DefaultWorkingDirectory)\BP.Ecommerce.API\bin\Release\net6.0\BP.Ecommerce.API v1'
